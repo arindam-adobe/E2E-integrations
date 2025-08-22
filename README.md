@@ -1,7 +1,11 @@
 # Adobe DX Suite End-to-End Integration (POC) – Blueprint & Step-by-Step Runbook
 
+---
+
+>
 > Scope: Web + (optional) Mobile app, integrating Adobe Analytics (AA), Adobe Target (AT), Adobe Experience Platform (AEP), Real-Time CDP (RT-CDP), Customer Journey Analytics (CJA), Adobe Journey Optimizer (AJO), Marketo Engage (MKT), Adobe Commerce (AC), and Workfront (WF).
 > Method: Use-case driven POC that is production-sane but safely isolated.
+>
 
 ---
 
@@ -117,18 +121,18 @@ flowchart TD
 
 ---
 
-## 4) Step-by-Step Runbook
+## 4) Step-by-Step Plan of Action
 
 ### Phase 1 – Foundations (Week 1–2)
 
-1. **Provision sandboxes**: AEP (`POC-Dev`, `POC-Stage`, `POC-Demo`).
+1. **Provision sandboxes**: AEP (`POC-Demo`).
 2. **Configure datastreams**: route to AA, Target, AJO, AEP.
 3. **Create schemas** in AEP: Profile + ExperienceEvent (web + commerce).
 4. **Enable datasets** for profile.
 
 ### Phase 2 – Identity & Ingestion (Week 3–4)
 
-1. Configure identity namespaces: ECID (primary), Email (hashed).
+1. Configure identity namespaces: ECID (primary), Email (hashed - maybe).
 2. Implement Web SDK on sample site (track page, PDP, cart, checkout).
 3. Connect Adobe Commerce → AEP via API.
 4. Integrate Marketo connector → ingest leads + activities.
