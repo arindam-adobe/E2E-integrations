@@ -88,17 +88,59 @@ flowchart TD
 * **Audience**: RT-CDP streaming segment `HighIntent_NewVisitor`.
 * **Outcome**: +X% sign-ups.
 
+
 ### UC2: Known prospect nurtured to first purchase
+
+```mermaid
+
+sequenceDiagram
+    participant P as Prospect
+    participant Web as Web SDK
+    participant Edge as AEP Edge
+    participant AJO as Journey Optimizer
+    participant MKT as Marketo
+
+    P->>Web: Login (email)
+    Web->>Edge: sendEvent (identified)
+    Edge->>AJO: Trigger nurture journey
+    Edge->>MKT: Sync audience
+    AJO-->>P: Welcome series (Email/SMS)
+    MKT-->>P: Multi-touch nurture program
+```
 
 * **Trigger**: Known visitor (email identified).
 * **Action**: AJO journey triggers welcome series across email/SMS; Marketo adds nurture stream.
 * **Measurement**: CJA shows uplift in purchase conversion.
+
 
 ### UC3: Abandoned cart recovery
 
 * **Signal**: Commerce event `cartAbandon`.
 * **Action**: AT recovery banner on revisit + AJO triggered push/email journey; Marketo fallback nurture.
 * **KPIs**: Cart recovery % and revenue uplift.
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant Commerce as Adobe Commerce
+    participant Edge as AEP Edge
+    participant AT as Adobe Target
+    participant AJO as Adobe Journey Optimizer
+    participant MKT as Marketo
+
+    U->>Commerce: Add items to cart
+    Commerce->>Edge: sendEvent(cart)
+    U->>Commerce: Abandon checkout
+    Commerce->>Edge: sendEvent(cartAbandon)
+    Edge->>AJO: Trigger abandonment journey
+    AJO-->>U: Email/Push reminder
+    U->>Web: Returns to site
+    Edge->>AT: Context delivery
+    AT-->>U: Recovery banner
+    Edge->>MKT: Fallback nurture stream
+```
+
+
 
 ### UC4: Post-purchase cross-sell journey
 
