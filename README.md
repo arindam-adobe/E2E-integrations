@@ -1,4 +1,4 @@
-# Adobe DX Suite End-to-End Integration (POC) – Blueprint & Step-by-Step Runbook
+# Adobe DX Suite End-to-End Integration (POC) – Blueprint
 
 ---
 
